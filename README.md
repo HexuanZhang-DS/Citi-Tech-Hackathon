@@ -1,4 +1,13 @@
-# UNIVEST DATA ANALYTICS
+![](PredictROI.gif)
+
+# Introduction
+
+Submission for the Jan 2021 Citi Tech Hackathon. Univest is a two-sided marketplace for Income Share Agreements (ISAs). Students sign up and indicate how much money they need for tuition, then they get offers from investors and choose the best one. Investors submit offers to fund the ISA. They can expect extremely low risk and medium to high returns. 
+
+In our MVP students can create a request for an ISA. This is posted to our backend and stored in a SQLite DB. Our machine learning algorithms then go to work calculating the expected yearly ROI over a 10 year timespan after graduation. Investors can search for this ISA requests and see the expected ROI.
+
+
+# Data Analysis
 
 ![WallStreetBets](https://upload.wikimedia.org/wikipedia/en/f/f0/WallStreetBets.png)
 

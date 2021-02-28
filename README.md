@@ -39,4 +39,21 @@ A notebook containing the initial analysis of the data:
 - Comparing regression models on a "small" dataset without predicted features (dropna). 
 - Artificial Neural Network 
 
+__________________________________________________________________
+
+### EDA, Visualization and Data Wrangling
+
+#### Data Overview
+
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow"><th></th><th>OCC10</th><th>SIBS</th><th>AGE</th><th>EDUC</th><th>PAEDUC</th><th>MAEDUC</th><th>DEGREE</th><th>PADEG</th><th>MADEG</th><th>MAJOR1</th><th>MAJOR2</th><th>DIPGED</th><th>SECTOR</th><th>BARATE</th><th>SEX</th><th>RACE</th><th>RES16</th><th>REG16</th><th>FAMILY16</th><th>MAWRKGRW</th><th>INCOM16</th><th>BORN</th><th>PARBORN</th><th>GRANBORN</th><th>POLVIEWS</th><th>INCOME</th></tr></thead><tbody>
+ <tr><td>0</td><td>Broadcast and sound engineering technicians an...</td><td>1.0</td><td>26.0</td><td>16.0</td><td>16.0</td><td>16.0</td><td>BACHELOR</td><td>BACHELOR</td><td>GRADUATE</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>MALE</td><td>WHITE</td><td>CITY GT 250000</td><td>W. SOU. CENTRAL</td><td>MOTHER & FATHER</td><td>YES</td><td>NaN</td><td>YES</td><td>BOTH IN U.S</td><td>1.0</td><td>SLGHTLY CONSERVATIVE</td><td>$8 000 TO 9 999</td></tr>
+ <tr><td>1</td><td>Advertising and promotions managers</td><td>6.0</td><td>44.0</td><td>14.0</td><td>12.0</td><td>12.0</td><td>JUNIOR COLLEGE</td><td>HIGH SCHOOL</td><td>HIGH SCHOOL</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>FEMALE</td><td>WHITE</td><td>BIG-CITY SUBURB</td><td>E. NOR. CENTRAL</td><td>MOTHER & FATHER</td><td>YES</td><td>NaN</td><td>YES</td><td>BOTH IN U.S</td><td>1.0</td><td>LIBERAL</td><td>$7 000 TO 7 999</td></tr>
+ <tr><td>2</td><td>First-line supervisors of office and administr...</td><td>0.0</td><td>44.0</td><td>18.0</td><td>11.0</td><td>11.0</td><td>GRADUATE</td><td>HIGH SCHOOL</td><td>HIGH SCHOOL</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>MALE</td><td>WHITE</td><td>TOWN LT 50000</td><td>W. SOU. CENTRAL</td><td>MOTHER & FATHER</td><td>YES</td><td>NaN</td><td>YES</td><td>BOTH IN U.S</td><td>ALL IN U.S</td><td>SLIGHTLY LIBERAL</td><td>$50000 TO 59999</td></tr>
+ <tr><td>3</td><td>Dispatchers</td><td>8.0</td><td>40.0</td><td>16.0</td><td>10.0</td><td>10.0</td><td>HIGH SCHOOL</td><td>LT HIGH SCHOOL</td><td>LT HIGH SCHOOL</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>MALE</td><td>BLACK</td><td>TOWN LT 50000</td><td>W. SOU. CENTRAL</td><td>MOTHER & FATHER</td><td>YES</td><td>NaN</td><td>YES</td><td>BOTH IN U.S</td><td>ALL IN U.S</td><td>MODERATE</td><td>$25000 TO 29999</td></tr>
+ <tr><td>4</td><td>Software developers, applications and systems ...</td><td>7.0</td><td>37.0</td><td>16.0</td><td>NaN</td><td>13.0</td><td>BACHELOR</td><td>NaN</td><td>HIGH SCHOOL</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>NaN</td><td>MALE</td><td>WHITE</td><td>COUNTRY,NONFARM</td><td>W. SOU. CENTRAL</td><td>MOTHER</td><td>YES</td><td>NaN</td><td>YES</td><td>BOTH IN U.S</td><td>NaN</td><td>LIBERAL</td><td>$75000 TO $89999</td></tr>
+</tbody></table>
+
+#### Income Breakdown
+
 

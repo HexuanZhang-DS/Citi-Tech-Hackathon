@@ -56,4 +56,45 @@ __________________________________________________________________
 
 #### Income Breakdown
 
+![](image/income.png)
 
+Income is in ranges, we recoded it into numeric variables by taking the lower bound of the range. We took the lower bound instead of the average of a range because some ranges have no upper bound in the data.
+
+After recoding, the income distribution looks as follows: 
+
+![](image/income2.png)
+
+#### Income by other features
+
+##### Majors
+![](image/majorbyincome.png)
+
+##### Degrees
+![](image/degreebyincome.png)
+
+##### Diplomas
+![](image/diplomabyincome.png)
+
+##### Father's Education
+![](image/fatheredubyincome.png)
+
+##### Mother's Education
+![](image/motheredubyincome.png)
+
+##### Siblings
+![](image/sibbyincome.png)
+
+##### Guardians
+![](image/guardianbyincome.png)
+
+##### Parents were born in the US
+![](image/parentsbornusbyincome.png)
+
+##### Gradparents were born in the US
+![](image/grandparentsbornus.png)
+
+##### Sex
+![](image/sexbyincome.png)
+
+##### Political Views
+![](image/polviews.png)

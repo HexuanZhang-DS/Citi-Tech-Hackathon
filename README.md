@@ -23,7 +23,7 @@ The idea was to see what salaries these individuals were earning and then use ba
 
 ### Breakdown:
 
-### [EDA, Visualization and Data Wrangling:](https://github.com/ricotomo/Citi-Tech-Hackathon/blob/data_analytics/EDA.ipynb)
+### [EDA, Visualization and Data Wrangling:](https://github.com/HexuanZhang-DS/income_share_agreements_roi/blob/data_analytics/EDA.ipynb)
 A notebook containing the initial analysis of the data:
 
 - Relationship between numerical features and income.
@@ -33,7 +33,7 @@ A notebook containing the initial analysis of the data:
 - Feature engineering -> dealing with null values, using predictive models to predict null values. 
 
 
-### [Modelling, ML Regressors, Keras Feed Forward Neural Network:](https://github.com/ricotomo/Citi-Tech-Hackathon/blob/data_analytics/modelling.ipynb)
+### [Modelling, ML Regressors, Keras Feed Forward Neural Network:](https://github.com/HexuanZhang-DS/income_share_agreements_roi/blob/data_analytics/modelling.ipynb)
 
 - Comparing regression models on a "large" dataset with predicted features.
 - Comparing regression models on a "small" dataset without predicted features (dropna). 
@@ -66,6 +66,9 @@ After recoding, the income distribution looks as follows:
 
 #### Income by other features
 
+##### Corelation Matrixs
+![](image/corrmatrix.png)
+
 ##### Majors
 ![](image/majorbyincome.png)
 
@@ -88,7 +91,7 @@ After recoding, the income distribution looks as follows:
 ![](image/guardianbyincome.png)
 
 ##### Parents were born in the US
-![](image/parentsbornusbyincome.png)
+![](image/parentsbornus.png)
 
 ##### Gradparents were born in the US
 ![](image/grandparentsbornus.png)
@@ -98,3 +101,146 @@ After recoding, the income distribution looks as follows:
 
 ##### Political Views
 ![](image/polviews.png)
+
+#### Feature Engineering
+
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow">
+ <th>Features</th><th>No. of Missing</th></tr></thead><tbody>
+ <tr><td>MAJOR1</td><td>2492</td></tr>
+ <tr><td>DIPGED</td><td>2438</td></tr>
+ <tr><td>PADEG</td><td>762</td></tr>
+ <tr><td>POLVIEWS</td><td>465</td></tr>
+ <tr><td>MADEG</td><td>350</td></tr>
+ <tr><td>GRANBORN</td><td>301</td></tr>
+ <tr><td>SIBS</td><td>207</td></tr>
+ <tr><td>PARBORN</td><td>203</td></tr>
+ <tr><td>FAMILY16</td><td>202</td></tr>
+ <tr><td>DEGREE</td><td>0</td></tr>
+ <tr><td>SEX</td><td>0</td></tr>
+</tbody></table>
+
+<strong>Methods:</strong>
++ Filling the mode for DIPGED, FAMILY16, PARBORN, GRANBORN, MADEG, PADEG.
++ Filling the median for SIBS.
++ Using SVM, Logistic Regression, Decision Tree, Random Forest models for feature engineering: MAJOR1, POLVIEWS 
+
+##### Polviews
+```
+df_dummies_polviews = df.drop(columns = "MAJOR1")
+df_dummies_polviews = df_dummies_polviews.dropna()
+tmp_y = df_dummies_polviews["POLVIEWS"]
+df_dummies_polviews = df_dummies_polviews.drop(columns = "POLVIEWS")
+df_dummies_polviews = pd.get_dummies(df_dummies_polviews)
+```
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow"><th>SIBS</th><th>DEGREE_BACHELOR</th><th>DEGREE_GRADUATE</th><th>DEGREE_HIGH SCHOOL</th><th>DEGREE_JUNIOR COLLEGE</th><th>PADEG_BACHELOR</th><th>PADEG_GRADUATE</th><th>PADEG_HIGH SCHOOL</th><th>PADEG_JUNIOR COLLEGE</th><th>PADEG_LT HIGH SCHOOL</th><th>MADEG_BACHELOR</th><th>MADEG_GRADUATE</th><th>MADEG_HIGH SCHOOL</th><th>MADEG_JUNIOR COLLEGE</th><th>MADEG_LT HIGH SCHOOL</th><th>SEX_FEMALE</th><th>SEX_MALE</th><th>DIPGED_GED</th><th>DIPGED_HS diploma after post HS classes</th><th>DIPGED_High School diploma</th><th>DIPGED_Other</th><th>FAMILY16_FATHER</th><th>FAMILY16_FATHER & STPMOTHER</th><th>FAMILY16_FEMALE RELATIVE</th><th>FAMILY16_M AND F RELATIVES</th><th>FAMILY16_MALE RELATIVE</th><th>FAMILY16_MOTHER</th><th>FAMILY16_MOTHER & FATHER</th><th>FAMILY16_MOTHER & STPFATHER</th><th>FAMILY16_OTHER</th><th>PARBORN_BOTH IN U.S</th><th>PARBORN_DK FOR BOTH</th><th>PARBORN_FATHER ONLY</th><th>PARBORN_MOTHER ONLY</th><th>PARBORN_MOTHER; FA. DK</th><th>PARBORN_NEITHER IN U.S</th><th>PARBORN_NOT FATHER;MO.DK</th><th>PARBORN_NOT MOTHER;FA.DK</th><th>GRANBORN_1.0</th><th>GRANBORN_2.0</th><th>GRANBORN_3.0</th><th>GRANBORN_4.0</th><th>GRANBORN_ALL IN U.S</th></tr></thead><tbody>
+ <tr><td>0</td><td>1.0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+ <tr><td>1</td><td>6.0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+ <tr><td>2</td><td>0.0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+ <tr><td>3</td><td>8.0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+ <tr><td>4</td><td>7.0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</tbody></table>
+
+<strong>SVM</strong>
+```
+model_polviews = svm.SVC(random_state=42)
+model_polviews.fit(X_train, y_train)
+model_polviews.score(X_test, y_test)
+```
+0.2909090909090909
+
+<strong>Logistic Regression</strong>
+```
+model_polviews = LogisticRegression(random_state=42)
+model_polviews.fit(X_train, y_train)
+model_polviews.score(X_test, y_test)
+```
+0.28484848484848485
+
+<strong>Decision tree</strong>
+```
+model_polviews = tree.DecisionTreeClassifier(random_state=42, max_depth=5)
+model_polviews.fit(X_train, y_train)
+model_polviews.score(X_test, y_test)
+```
+0.27575757575757576
+
+<strong>Random forest</strong>
+```
+model_polviews = RandomForestClassifier(max_depth=6, random_state=42)
+model_polviews.fit(X_train, y_train)
+model_polviews.score(X_test, y_test)
+```
+0.2909090909090909
+
+SVM and random forest gave us smiliar results. We use SVM model to predict missing values of political views.
+
+We went through the same process for MAJOR1 and finally used Random Forest to predict missing values of Majors. 
+
+### Modelling, ML Regressors, Keras Feed Forward Neural Network
+
+#### Tain test split
+```
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+X_train shape: (3010, 128) | X_test shape: (753, 128)</br>
+y_train mean: 43348.02 | y_test mean: 44745.69</br>
+128 features</br>
+
+#### ML models
+
+##### Linear Regression
+```
+LR = linear_model.LinearRegression().fit(X_train, y_train)
+LR.score(X_test, y_test)
+```
+-2.7751720305407978e+17
+
+##### Ridge Regression
+```
+RR = linear_model.Ridge(alpha=85, random_state=42).fit(X_train, y_train)
+RR.score(X_test, y_test)
+```
+0.15757294603748428
+
+##### Lasso Regression
+```
+LAS = linear_model.Lasso(alpha=85, random_state=42).fit(X_train, y_train)
+LAS.score(X_test, y_test)
+```
+0.15091859140242336
+
+##### Random Forest
+```
+RF = RandomForestRegressor(max_depth=6, random_state=42).fit(X_train, y_train)
+RF.score(X_test, y_test)
+```
+0.14987449437771827
+
+##### XGBoost
+```
+XG = xgb.XGBRegressor(objective ='reg:squarederror', colsample_bynode = 0.5,colsample_bylevel=0.5, learning_rate = 0.05,
+                max_depth = 5, alpha = 10, n_estimators = 100, gamma=0.5)
+
+XG.fit(X_train, y_train)
+XG.score(X_test, y_test)
+```
+0.15566510863040006
+
+<strong>Hyperparameter tuning</strong>
+After a GridSearch for hyperparameters we got the best_params as follows:
+```
+best_params={'colsample_bylevel': 0.5, 'colsample_bynode': 0.5, 'colsample_bytree': 0.5, 'gamma': 0, 'learning_rate': 0.05, 'max_depth': 5, 'min_child_weight': 4, 'n_estimators': 100, 'objective': 'reg:squarederror', 'subsample': 0.9}
+```
+The XGBoost model is updated:
+```
+XG = xgb.XGBRegressor(**best_params)
+XG.fit(X_train, y_train) 
+XG.score(X_test, y_test)
+```
+0.16381963132089417
+
+XGBoost gave us the best result so far. 
+
+#### TF/Keras

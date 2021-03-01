@@ -229,6 +229,7 @@ XG.score(X_test, y_test)
 0.15566510863040006
 
 <strong>Hyperparameter tuning</strong>
+
 After a GridSearch for hyperparameters we got the best_params as follows:
 ```
 best_params={'colsample_bylevel': 0.5, 'colsample_bynode': 0.5, 'colsample_bytree': 0.5, 'gamma': 0, 'learning_rate': 0.05, 'max_depth': 5, 'min_child_weight': 4, 'n_estimators': 100, 'objective': 'reg:squarederror', 'subsample': 0.9}

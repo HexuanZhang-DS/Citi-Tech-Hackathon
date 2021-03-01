@@ -245,3 +245,52 @@ XG.score(X_test, y_test)
 XGBoost gave us the best result so far. 
 
 #### TF/Keras
+```
+modelff = Sequential()
+modelff.add(Dense(units=512, activation='relu', input_dim=128))
+modelff.add(Dropout(0.5))
+modelff.add(Dense(units=256, activation='relu'))
+modelff.add(Dropout(0.5))
+modelff.add(Dense(units=128, activation='linear'))
+modelff.add(Dropout(0.5))
+modelff.add(Dense(1, activation='linear'))
+modelff.compile(loss='mse', optimizer="adam", metrics=['accuracy'])
+modelff.summary()
+```
+Model: "sequential": 
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow">
+                                   
+ <tr><td>Layer (type)</td><td>Output Shape</td><td>Param #</td></tr>
+ <tr><td>dense (Dense)</td><td>(None, 512)</td><td>66048</td></tr>
+ <tr><td>dropout (Dropout)</td><td>(None, 512)</td><td>0</td></tr>
+ <tr><td>dense_1 (Dense)</td><td>(None, 256)</td><td>131328</td></tr>
+ <tr><td>dropout_1 (Dropout)</td><td>(None, 256)</td><td>0</td></tr>
+ <tr><td>dense_2 (Dense)</td><td>(None, 128)</td><td>32896</td></tr>
+ <tr><td>dropout_2 (Dropout)</td><td>(None, 128)</td><td>0</td></tr>
+ <tr><td>dense_3 (Dense)</td><td>(None, 1)</td><td>129</td></tr>
+ <tr><td>==========</td></tr>
+ <tr><td>Total params: 230,401</td></tr>
+ <tr><td>Trainable params: 230,401</td></tr>
+ <tr><td>Non-trainable params: 0</td></tr>
+</tbody></table>
+
+```
+num_epochs = 5000
+history = modelff.fit(X_train, y_train.values)
+```
+95/95 [==============================] - 0s 1ms/step - loss: 2388068864.0000 - accuracy: 0.0123
+
+```
+y_pred=modelff.predict(X_test)
+r2_score(y_test, y_pred )
+```
+-0.1031647121676047
+
+ANN's result is not very good. We will use the XGBoost model for our final prediction. 
+
+#### EXPORTING THE MODEL
+```
+with open('model_pickle', 'wb') as f:
+    pickle.dump(XG, f)
+```

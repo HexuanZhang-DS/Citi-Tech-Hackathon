@@ -216,7 +216,7 @@ LAS.score(X_test, y_test)
 RF = RandomForestRegressor(max_depth=6, random_state=42).fit(X_train, y_train)
 RF.score(X_test, y_test)
 ```
-0.14987449437771827
+0.14687449437771827
 
 ##### XGBoost
 ```
